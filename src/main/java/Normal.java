@@ -3,10 +3,8 @@ import iconos.Icono;
 public class Normal extends Popularidad{
   private Integer cantReproduccionesNecesarios = 1000;
 
-  public Normal(Integer reproducciones, Integer likes, Integer dislikes) {
-    this.cantReproduccionesInicial = reproducciones;
-    this.cantLikesInicial = likes;
-    this.cantDislikesInicial = dislikes;
+  public Normal() {
+    super();
     this.icono = Icono.MUSICAL_NOTE;
   }
 

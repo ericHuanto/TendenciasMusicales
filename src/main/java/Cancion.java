@@ -18,7 +18,7 @@ public class Cancion {
   public Cancion(String titulo, String artista) {
     this.titulo = titulo;
     this.artista = artista;
-    this.popularidad = new Normal(0, 0, 0);
+    this.popularidad = new Normal();
     this.cantReproducciones = 0;
     this.cantLikes = 0;
     this.cantDislikes = 0;
@@ -26,10 +26,18 @@ public class Cancion {
 
   public void recibirLike() {
     this.cantLikes++;
+    popularidad.aumentarLikes();
   }
 
   public void recibirDislike() {
     this.cantDislikes++;
+    popularidad.aumentarDislikes();
+  }
+
+  public void actualizarReproduccion() {
+    cantReproducciones++;
+    ultimaReproduccion = LocalDateTime.now();
+    popularidad.aumentarReproduccion();
   }
 
   public String detalle() {
@@ -37,10 +45,8 @@ public class Cancion {
   }
 
   public String reproducir() {
-    cantReproducciones++;
-    ultimaReproduccion = LocalDateTime.now();
-    //reproducir es la accion que puede hacer que la cancion cambie de estado
-    popularidad.reproducir(this);
+    actualizarReproduccion();
+    popularidad.reproducir(this); //reproducir es la accion que puede hacer que la cancion cambie de estado
     return detalle();
   }
 

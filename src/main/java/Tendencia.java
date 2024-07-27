@@ -5,10 +5,8 @@ import java.time.LocalDateTime;
 public class Tendencia extends Popularidad {
   private Integer cantHorasNecesarias = 24;
 
-  public Tendencia(Integer reproducciones, Integer likes, Integer dislikes) {
-    this.cantReproduccionesInicial = reproducciones;
-    this.cantLikesInicial = likes;
-    this.cantDislikesInicial = dislikes;
+  public Tendencia() {
+    super();
     this.icono = Icono.FIRE;
   }
 
@@ -20,7 +18,7 @@ public class Tendencia extends Popularidad {
   @Override
   public void reproducir(Cancion cancion) {
     if(ultimaReproduccionEnHs(cancion) >=  cantHorasNecesarias) {
-      cancion.setPopularidad(new Normal(cancion.getCantReproducciones(), cancion.getCantLikes(), cancion.getCantDislikes()));
+      cancion.setPopularidad(new Normal());
     }
   }
 

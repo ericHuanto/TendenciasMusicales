@@ -6,9 +6,7 @@ public class Auge extends Popularidad {
   private Integer cantDislikesNecesarios = 5000;
 
   public Auge(Integer reproducciones, Integer likes, Integer dislikes) {
-    this.cantReproduccionesInicial = reproducciones;
-    this.cantLikesInicial = likes;
-    this.cantDislikesInicial = dislikes;
+    super();
     this.icono = Icono.ROCKET;
   }
 
@@ -20,11 +18,11 @@ public class Auge extends Popularidad {
   @Override
   public void reproducir(Cancion cancion) {
     if (reproduccionesEnEsteEstado(cancion) >= cantReproduccionesNecesarios && likesEnEsteEstado(cancion) >= cantlikesNecesarios) {
-      cancion.setPopularidad(new Tendencia(cancion.getCantReproducciones(), cancion.getCantLikes(), cancion.getCantDislikes()));
+      cancion.setPopularidad(new Tendencia());
     }
 
     if (dislikesEnEsteEstado(cancion) >= cantDislikesNecesarios) {
-      cancion.setPopularidad(new Normal(cancion.getCantReproducciones(), cancion.getCantLikes(), cancion.getCantDislikes()));
+      cancion.setPopularidad(new Normal());
     }
   }
 

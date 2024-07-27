@@ -10,6 +10,12 @@ public abstract class Popularidad {
     return getDetalleIcono() + leyenda(cancion);
   }
 
+  protected Popularidad() {
+    this.cantReproduccionesInicial = 0;
+    this.cantLikesInicial = 0;
+    this.cantDislikesInicial = 0;
+  }
+
   protected String getDetalleIcono() {
     return icono.texto();
   }
@@ -19,15 +25,26 @@ public abstract class Popularidad {
   public abstract void reproducir(Cancion cancion);
 
   protected Integer reproduccionesEnEsteEstado(Cancion cancion) {
-    return cancion.getCantReproducciones() - cantReproduccionesInicial;
+    return cantReproduccionesInicial;
   }
 
   protected Integer dislikesEnEsteEstado(Cancion cancion) {
-    return cancion.getCantDislikes() - cantDislikesInicial;
+    return cantDislikesInicial;
   }
 
   protected Integer likesEnEsteEstado(Cancion cancion) {
-    return cancion.getCantLikes() - cantLikesInicial;
+    return cantLikesInicial;
   }
 
+  public void aumentarReproduccion() {
+    cantReproduccionesInicial++;
+  }
+
+  public void aumentarLikes() {
+    cantLikesInicial++;
+  }
+
+  public void aumentarDislikes() {
+    cantDislikesInicial++;
+  }
 }
