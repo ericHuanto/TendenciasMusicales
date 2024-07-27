@@ -1,5 +1,5 @@
 @startuml
-skinparam classBackgroundColor #ececec
+skinparam classBackgroundColor #ffffbf
 
 class Cancion {
  titulo: String
@@ -20,7 +20,12 @@ class Cancion {
  +getAnioAlbum(): String
 }
 
-abstract class " Popularidad " <<abstract>> {
+class Album {
+ nombre: String
+ Anio: LocalDate
+}
+
+abstract class " Popularidad" <<abstract>> {
  icono: Icono
  reproducionesEnEstado: Int
  likesEnEstado: Int
@@ -34,26 +39,40 @@ abstract class " Popularidad " <<abstract>> {
  +reproducir(Cancion): String
 }
 
+class " Icono" {}
+hide " Icono" members
 
 class Normal {
- 
- detalle(): String
+ reproduccionesNecesarias: Int 
+
+ #leyenda(Cancion): String
+ +reproducir(): Void
 }
 
 class Auge {
- 
- detalle(): String
+ reproduccionesNecesarias: Int 
+ likesNecesarios: Int
+ dislikesNecesarios: Int
+
+ #leyenda(Cancion): String
+ +reproducir(): Void
 }
 
 class Tendencia {
- 
- detalle(): String
+ horasNecesarias: Int
+
+ #leyenda(Cancion): String
+ +reproducir(): Void
+ -ultimaReproduccionEnHs(Cancion): Int
 }
 
-Cancion -r-> " Popularidad ": "                                "
-" Popularidad " <|.. Normal
-" Popularidad " <|.. Auge
-" Popularidad " <|.. Tendencia
+Cancion -r-> " Popularidad": "                               "
+Cancion --> Album
+
+" Popularidad" <|.. Normal
+" Popularidad" <|.. Auge
+" Popularidad" <|.. Tendencia
+" Popularidad" -r-> " Icono": "                 "
 
 Normal ..> Auge
 Auge ..> Normal

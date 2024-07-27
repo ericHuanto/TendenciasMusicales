@@ -1,5 +1,9 @@
+import canciones.Cancion;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import popularidades.tiposDePopularidad.Auge;
+import popularidades.tiposDePopularidad.Normal;
+import popularidades.tiposDePopularidad.Tendencia;
 
 public class TestPopularidad {
 

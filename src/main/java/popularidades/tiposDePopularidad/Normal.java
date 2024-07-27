@@ -1,7 +1,12 @@
-import iconos.Icono;
+package popularidades.tiposDePopularidad;
 
-public class Normal extends Popularidad{
-  private Integer cantReproduccionesNecesarios = 1000;
+import canciones.Cancion;
+import iconos.Icono;
+import popularidades.Popularidad;
+import popularidades.tiposDePopularidad.Auge;
+
+public class Normal extends Popularidad {
+  private Integer reproduccionesNecesarias = 1000;
 
   public Normal() {
     super();
@@ -15,7 +20,7 @@ public class Normal extends Popularidad{
 
   @Override
   public void reproducir(Cancion cancion) {
-    if(getReproduccionesEnEstado() >= cantReproduccionesNecesarios) {
+    if(getReproduccionesEnEstado() >= reproduccionesNecesarias) {
       cancion.setPopularidad(new Auge());
     }
   }

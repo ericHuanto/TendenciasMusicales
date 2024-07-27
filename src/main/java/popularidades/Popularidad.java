@@ -1,5 +1,8 @@
+package popularidades;
+
 import iconos.Icono;
 import lombok.Getter;
+import canciones.Cancion;
 
 @Getter
 public abstract class Popularidad {

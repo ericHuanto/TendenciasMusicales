@@ -1,7 +1,11 @@
+package canciones;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
+import popularidades.Popularidad;
+import popularidades.tiposDePopularidad.Normal;
 
 @Getter
 public class Cancion {

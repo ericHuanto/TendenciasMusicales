@@ -1,9 +1,14 @@
+package popularidades.tiposDePopularidad;
+
+import canciones.Cancion;
 import iconos.Icono;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import popularidades.Popularidad;
+import popularidades.tiposDePopularidad.Normal;
 
 public class Tendencia extends Popularidad {
-  private Integer cantHorasNecesarias = 24;
+  private Integer horasNecesarias = 24;
 
   public Tendencia() {
     super();
@@ -17,7 +22,7 @@ public class Tendencia extends Popularidad {
 
   @Override
   public void reproducir(Cancion cancion) {
-    if(ultimaReproduccionEnHs(cancion) >=  cantHorasNecesarias) {
+    if(ultimaReproduccionEnHs(cancion) >= horasNecesarias) {
       cancion.setPopularidad(new Normal());
     }
   }

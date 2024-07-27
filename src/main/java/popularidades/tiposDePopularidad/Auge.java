@@ -1,9 +1,13 @@
+package popularidades.tiposDePopularidad;
+
+import canciones.Cancion;
 import iconos.Icono;
+import popularidades.Popularidad;
 
 public class Auge extends Popularidad {
-  private Integer cantReproduccionesNecesarios = 50000;
-  private Integer cantlikesNecesarios = 20000;
-  private Integer cantDislikesNecesarios = 5000;
+  private Integer reproduccionesNecesarias = 50000;
+  private Integer likesNecesarios = 20000;
+  private Integer dislikesNecesarios = 5000;
 
   public Auge() {
     super();
@@ -17,11 +21,11 @@ public class Auge extends Popularidad {
 
   @Override
   public void reproducir(Cancion cancion) {
-    if (getReproduccionesEnEstado() >= cantReproduccionesNecesarios && getLikesEnEstado() >= cantlikesNecesarios) {
+    if (getReproduccionesEnEstado() >= reproduccionesNecesarias && getLikesEnEstado() >= likesNecesarios) {
       cancion.setPopularidad(new Tendencia());
     }
 
-    if (getDislikesEnEstado() >= cantDislikesNecesarios) {
+    if (getDislikesEnEstado() >= dislikesNecesarios) {
       cancion.setPopularidad(new Normal());
     }
   }
