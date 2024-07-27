@@ -1,0 +1,43 @@
+@startuml
+class Cancion {
+ titulo: String
+ albun: String
+ artista: String
+ popularidad: Popularidad
+
+ detalle(): String
+}
+
+abstract class " Popularidad " <<abstract>> {
+ icono: Icono
+}
+
+
+class Normal {
+ 
+ detalle(): String
+}
+
+class Auge {
+ 
+ detalle(): String
+}
+
+class Tendencia {
+ 
+ detalle(): String
+}
+
+Cancion -r-> " Popularidad ": "                                "
+" Popularidad " <|.. Normal
+" Popularidad " <|.. Auge
+" Popularidad " <|.. Tendencia
+
+Normal ..> Auge: "               "
+Auge ..> Normal
+Auge .r.> Tendencia: "                                      " 
+Tendencia .l.> Normal
+
+
+
+@enduml
