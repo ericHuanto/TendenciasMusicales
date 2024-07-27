@@ -40,7 +40,8 @@ abstract class " Popularidad" <<abstract>> {
 }
 
 class " Icono" {}
-hide " Icono" members
+hide " Icono" attributes
+hide " Icono" methods
 
 class Normal {
  reproduccionesNecesarias: Int 
