@@ -48,10 +48,10 @@ public class Cancion {
     return popularidad.detalle(this);
   }
 
-  public String reproducir() {
+  public void reproducir() {
     actualizarReproduccion();
     popularidad.reproducir(this); //reproducir es la accion que puede hacer que la cancion cambie de estado
-    return detalle();
+    //return detalle();
   }
 
   public String getAlbum() {

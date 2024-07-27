@@ -64,7 +64,7 @@ class Tendencia {
 
  #leyenda(Cancion): String
  +reproducir(): Void
- -ultimaReproduccionEnHs(Cancion): Int
+ -ultimaReproduccionFueXHs(Cancion): Int
 }
 
 Cancion -r-> " Popularidad": "                               "

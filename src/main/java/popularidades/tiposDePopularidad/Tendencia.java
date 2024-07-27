@@ -4,6 +4,7 @@ import canciones.Cancion;
 import iconos.Icono;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import lombok.Getter;
 import popularidades.Popularidad;
 import popularidades.tiposDePopularidad.Normal;
 
@@ -22,12 +23,13 @@ public class Tendencia extends Popularidad {
 
   @Override
   public void reproducir(Cancion cancion) {
-    if(ultimaReproduccionEnHs(cancion) >= horasNecesarias) {
+    if(ultimaReproduccionFueXHs(cancion) >= horasNecesarias) {
+      System.out.println("entraste al if");
       cancion.setPopularidad(new Normal());
     }
   }
 
-  private Integer ultimaReproduccionEnHs(Cancion cancion) {
+  public Integer ultimaReproduccionFueXHs(Cancion cancion) {
     Duration duracion = Duration.between(cancion.getUltimaReproduccion(), LocalDateTime.now());
     return (int)duracion.toHours();
   }
