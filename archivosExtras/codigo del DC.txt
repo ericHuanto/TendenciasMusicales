@@ -1,15 +1,37 @@
 @startuml
+skinparam classBackgroundColor #ececec
+
 class Cancion {
  titulo: String
- albun: String
+ album: Album
  artista: String
  popularidad: Popularidad
+ cantReproducciones: Int
+ cantLikes: Int
+ cantDislike: Int
+ ultimaReproduccion: LocalDateTime
 
- detalle(): String
+ +recibirLike(): Void
+ +recibirDislike(): Void
+ -actualizarReproduccion(): Void
+ +detalle(): String
+ +reproducir(): String
+ +getNombreAlbum(): String
+ +getAnioAlbum(): String
 }
 
 abstract class " Popularidad " <<abstract>> {
  icono: Icono
+ reproducionesEnEstado: Int
+ likesEnEstado: Int
+ dislikesEnEstado: Int
+ 
+ +aumentarReproduccion(): Void
+ +aumentarLikes(): Void
+ +aumentarDislikes(): Void
+ +detalle(): String
+ #leyenda(Cancion): String
+ +reproducir(Cancion): String
 }
 
 
@@ -33,11 +55,8 @@ Cancion -r-> " Popularidad ": "                                "
 " Popularidad " <|.. Auge
 " Popularidad " <|.. Tendencia
 
-Normal ..> Auge: "               "
+Normal ..> Auge
 Auge ..> Normal
-Auge .r.> Tendencia: "                                      " 
+Auge .r.> Tendencia: "                      " 
 Tendencia .l.> Normal
-
-
-
 @enduml

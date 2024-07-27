@@ -15,8 +15,8 @@ public class Normal extends Popularidad{
 
   @Override
   public void reproducir(Cancion cancion) {
-    if(reproduccionesEnEsteEstado(cancion) >= cantReproduccionesNecesarios) {
-      cancion.setPopularidad(new Auge(cancion.getCantReproducciones(), cancion.getCantLikes(), cancion.getCantDislikes()));
+    if(getReproduccionesEnEstado() >= cantReproduccionesNecesarios) {
+      cancion.setPopularidad(new Auge());
     }
   }
 

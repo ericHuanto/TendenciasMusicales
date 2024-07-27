@@ -1,50 +1,38 @@
 import iconos.Icono;
+import lombok.Getter;
 
+@Getter
 public abstract class Popularidad {
   protected Icono icono;
-  public Integer cantReproduccionesInicial;
-  public Integer cantLikesInicial;
-  public Integer cantDislikesInicial;
-
-  public String detalle(Cancion cancion) {
-    return getDetalleIcono() + leyenda(cancion);
-  }
+  protected Integer reproduccionesEnEstado;
+  protected Integer likesEnEstado;
+  protected Integer dislikesEnEstado;
 
   protected Popularidad() {
-    this.cantReproduccionesInicial = 0;
-    this.cantLikesInicial = 0;
-    this.cantDislikesInicial = 0;
+    this.reproduccionesEnEstado = 0;
+    this.likesEnEstado = 0;
+    this.dislikesEnEstado = 0;
   }
 
-  protected String getDetalleIcono() {
-    return icono.texto();
+  public void aumentarReproduccion() {
+    reproduccionesEnEstado++;
+  }
+
+  public void aumentarLikes() {
+    likesEnEstado++;
+  }
+
+  public void aumentarDislikes() {
+    dislikesEnEstado++;
+  }
+
+  public String detalle(Cancion cancion) {
+    return getIcono().texto() + leyenda(cancion);
   }
 
   protected abstract String leyenda(Cancion cancion);
 
   public abstract void reproducir(Cancion cancion);
 
-  protected Integer reproduccionesEnEsteEstado(Cancion cancion) {
-    return cantReproduccionesInicial;
-  }
 
-  protected Integer dislikesEnEsteEstado(Cancion cancion) {
-    return cantDislikesInicial;
-  }
-
-  protected Integer likesEnEsteEstado(Cancion cancion) {
-    return cantLikesInicial;
-  }
-
-  public void aumentarReproduccion() {
-    cantReproduccionesInicial++;
-  }
-
-  public void aumentarLikes() {
-    cantLikesInicial++;
-  }
-
-  public void aumentarDislikes() {
-    cantDislikesInicial++;
-  }
 }
